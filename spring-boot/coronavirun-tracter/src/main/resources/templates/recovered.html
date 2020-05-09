@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Corona Virus Tracker Application</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+body{
+  background-color: #bdc3c7;
+}
+.table-fixed{
+  width: 100%;
+  background-color: #f3f3f3;
+  tbody{
+    height:200px;
+    overflow-y:auto;
+    width: 100%;
+    }
+  thead,tbody,tr,td,th{
+    display:block;
+  }
+  tbody{
+    td{
+      float:left;
+    }
+  }
+  thead {
+    tr{
+      th{
+        float:left;
+       background-color: #f39c12;
+       border-color:#e67e22;
+      }
+    }
+  }
+}
+
+</style>
+<script>
+$(document).ready(function () {
+	$('#dtDynamicVerticalScrollExample').DataTable({
+	"scrollY": "50vh",
+	"scrollCollapse": true,
+	});
+	$('.dataTables_length').addClass('bs-select');
+	});
+</script>
+</head>
+<body>
+<h1>Corona Virus Tracker Application</h1>
+<p1>This application lists the number of recovered cases across the global</p1>
+<div class="jumbotron">
+  <h1 class="display-6" th:text="${deathTotalCases}"></h1>
+  <p class="lead">Total no of recovered cases reported as of today</p>
+</div>
+<div class="card" style="width: 10rem;">
+    <a href="http://localhost:9091" class="btn btn-primary stretched-link">Back</a>
+</div>
+<div class="container">
+<table id="dtDynamicVerticalScrollExample" class="table table-fixed" cellspacing="0"
+  width="100%">
+	  <thead>
+	    <tr>
+	      <th class="th-sm">Province/State</th>
+	      <th class="th-sm">Country</th>
+	      <th class="th-sm">total cases reported</th>
+	      <th class="th-sm">Changes since last day</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="recoveredLocationState: ${recoveredLocationStates}">
+	      <td th:text="${recoveredLocationState.state}"></td>
+	      <td th:text="${recoveredLocationState.country}"></td>
+	      <td th:text="${recoveredLocationState.totalCases}"></td>
+		  <td th:text="${recoveredLocationState.diffFromPrevDay}"></td>	
+	    </tr>
+	  </tbody>
+	</table>
+</div>
+</body>
+</html>
