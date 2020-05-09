@@ -2,3 +2,9 @@ Welcome in spring boot world!
 
 What is spring boot?
   -> it is powerful framework for developing web & mirco services based applications.
+
+What are modules of spring boot.
+
+Spring actuator
+Spring intializer 
+etc
