@@ -1,0 +1,14 @@
+server:
+      port: 8881
+app:
+   name: Spring Config Client
+   description: Fetch local spring cloud config server repository details ${app.name} 
+my:
+  greeting: local Hello world from config server
+  list:
+      values: one, two, three
+
+management.endpoints.web.exposure.include: "*"
+config.port: 8888
+spring.cloud.config.uri: http://localhost:${config.port}
+spring.application.name: spring-config-server
