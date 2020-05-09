@@ -8,3 +8,6 @@ What are modules of spring boot.
 Spring actuator
 Spring intializer 
 etc
+
+
+Spring boot is latest framework developed on top spring.
